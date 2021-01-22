@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-hello-world',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hello-world.component.scss']
 })
 export class HelloWorldComponent implements OnInit {
+
+  @ViewChild('googleMap', { static: true })
+  googleMap!: ElementRef;
 
   map!: google.maps.Map;
 
@@ -17,13 +20,13 @@ export class HelloWorldComponent implements OnInit {
 
   private initMap(): void {
 
-    // HTML element where google maps will get rendered
-    const mapHTML = document.getElementById('hello-world-map') as HTMLElement;
-
-    this.map = new google.maps.Map(mapHTML, {
-      center: { lat: 17.412127, lng: 78.474921 },
+    const mapProperties: google.maps.MapOptions = {
+      // Center to Hyderabad, India
+      center: new google.maps.LatLng(17.412127, 78.474921),
       zoom: 15,
-    });
+    };
+
+    this.map = new google.maps.Map(this.googleMap?.nativeElement, mapProperties);
   }
 
 }
