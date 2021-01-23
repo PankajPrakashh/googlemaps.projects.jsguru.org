@@ -8,9 +8,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class HelloWorldComponent implements OnInit {
 
   @ViewChild('googleMap', { static: true })
-  googleMap!: ElementRef;
+  googleMapRef: ElementRef;
 
-  map!: google.maps.Map;
+  map: google.maps.Map;
 
   constructor() { }
 
@@ -20,13 +20,13 @@ export class HelloWorldComponent implements OnInit {
 
   private initMap(): void {
 
-    const mapProperties: google.maps.MapOptions = {
-      // Center to Hyderabad, India
+    const mapOptions: google.maps.MapOptions = {
+      // Centered to Hyderabad, India
       center: new google.maps.LatLng(17.412127, 78.474921),
       zoom: 15,
     };
 
-    this.map = new google.maps.Map(this.googleMap?.nativeElement, mapProperties);
+    this.map = new google.maps.Map(this.googleMapRef.nativeElement, mapOptions);
   }
 
 }
