@@ -23,7 +23,7 @@
     "types": [
       "googlemaps"
     ],
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
